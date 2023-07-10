@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  puuid: MyString
+  tier: MyString
+  rank: MyString
+  league_points: 1
+  summoner_id: MyString
+  summoner_name: MyString
+  wins: 1
+  losses: 1
+
+two:
+  puuid: MyString
+  tier: MyString
+  rank: MyString
+  league_points: 1
+  summoner_id: MyString
+  summoner_name: MyString
+  wins: 1
+  losses: 1

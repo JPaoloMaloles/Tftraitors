@@ -12,6 +12,8 @@ gem "sprockets-rails"
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
+gem 'jwt'
+gem 'http'
 
 
 # Use postgresql as the database for Active Record

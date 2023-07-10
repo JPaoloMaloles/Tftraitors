@@ -1,2 +1,9 @@
-json.extract! summoner_info, :id, :created_at, :updated_at
-json.url summoner_info_url(summoner_info, format: :json)
+json.id summoner_info.id
+json.puuid summoner_info.puuid
+json.tier summoner_info.tier
+json.rank summoner_info.rank
+json.league_points summoner_info.league_points
+json.summoner_id summoner_info.summoner_id
+json.summoner_name summoner_info.summoner_name
+json.wins summoner_info.wins
+json.losses summoner_info.losses

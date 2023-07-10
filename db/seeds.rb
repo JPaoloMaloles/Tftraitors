@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+SummonerInfo.create!(
+  puuid: "test_puuid",
+  tier: "test_tier",
+  rank: "test_rank",
+  league_points: 1,
+  summoner_id: "test_summoner_id",
+  summoner_name: "test_summoner_name",
+  wins: 1,
+  losses: 1,
+)

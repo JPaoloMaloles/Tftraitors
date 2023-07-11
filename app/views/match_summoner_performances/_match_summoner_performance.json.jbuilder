@@ -9,3 +9,5 @@ json.level_placement match_summoner_performance.level_placement
 json.players_eliminated match_summoner_performance.players_eliminated
 json.time_eliminated match_summoner_performance.time_eliminated
 json.total_damage_to_players match_summoner_performance.total_damage_to_players
+json.match match_summoner_performance.match
+json.summoner_info match_summoner_performance.summoner_info

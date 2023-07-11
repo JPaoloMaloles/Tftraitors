@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_164705) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_174042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "match_summoner_performances", force: :cascade do |t|
+    t.integer "match_id"
+    t.integer "summoner_info_id"
+    t.string "riot_match_id"
+    t.string "puuid"
+    t.integer "gold_left"
+    t.integer "last_round"
+    t.integer "level_placement"
+    t.integer "players_eliminated"
+    t.float "time_eliminated"
+    t.integer "total_damage_to_players"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string "data_version"

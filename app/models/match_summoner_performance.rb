@@ -1,0 +1,2 @@
+class MatchSummonerPerformance < ApplicationRecord
+end

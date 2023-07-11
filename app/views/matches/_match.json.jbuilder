@@ -1,0 +1,10 @@
+json.id match.id
+json.data_version match.data_version
+json.riot_match_id match.riot_match_id
+json.game_datetime match.game_datetime
+json.game_length match.game_length
+json.game_version match.game_version
+json.queu_id match.queu_id
+json.tft_game_type match.tft_game_type
+json.tft_set_core_name match.tft_set_core_name
+json.tft_set_number match.tft_set_number

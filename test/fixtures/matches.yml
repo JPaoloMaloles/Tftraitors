@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_version: MyString
+  riot_match_id: MyString
+  game_datetime: 1
+  game_length: 1.5
+  game_version: MyString
+  queu_id: 1
+  tft_game_type: MyString
+  tft_set_core_name: MyString
+  tft_set_number: 1
+
+two:
+  data_version: MyString
+  riot_match_id: MyString
+  game_datetime: 1
+  game_length: 1.5
+  game_version: MyString
+  queu_id: 1
+  tft_game_type: MyString
+  tft_set_core_name: MyString
+  tft_set_number: 1

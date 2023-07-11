@@ -15,3 +15,15 @@ SummonerInfo.create!(
   wins: 1,
   losses: 1,
 )
+
+Match.create!(
+  data_version: "test_data_version",
+  riot_match_id: "test_riot_match_id",
+  game_datetime: "test_game_datetime",
+  game_length: "test_game_length",
+  game_version: "test_game_version",
+  queu_id: "test_queu_id",
+  tft_game_type: "test_tft_game_type",
+  tft_set_core_name: "test_tft_set_core_name",
+  tft_set_number: "test_tft_set_number",
+)

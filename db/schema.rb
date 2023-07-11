@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_181748) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_163655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_181748) do
     t.string "tier"
     t.string "rank"
     t.integer "league_points"
-    t.string "summoner_id"
+    t.string "riot_summoner_id"
     t.string "summoner_name"
     t.integer "wins"
     t.integer "losses"

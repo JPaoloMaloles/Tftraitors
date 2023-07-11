@@ -10,7 +10,7 @@ SummonerInfo.create!(
   tier: "test_tier",
   rank: "test_rank",
   league_points: 1,
-  summoner_id: "test_summoner_id",
+  riot_summoner_id: "test_summoner_id",
   summoner_name: "test_summoner_name",
   wins: 1,
   losses: 1,

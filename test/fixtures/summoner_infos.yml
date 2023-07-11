@@ -5,7 +5,7 @@ one:
   tier: MyString
   rank: MyString
   league_points: 1
-  summoner_id: MyString
+  riot_summoner_name: MyString
   summoner_name: MyString
   wins: 1
   losses: 1
@@ -15,7 +15,7 @@ two:
   tier: MyString
   rank: MyString
   league_points: 1
-  summoner_id: MyString
+  riot_summoner_name: MyString
   summoner_name: MyString
   wins: 1
   losses: 1

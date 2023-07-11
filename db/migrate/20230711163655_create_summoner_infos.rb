@@ -5,7 +5,7 @@ class CreateSummonerInfos < ActiveRecord::Migration[7.0]
       t.string :tier
       t.string :rank
       t.integer :league_points
-      t.string :summoner_id
+      t.string :riot_summoner_id
       t.string :summoner_name
       t.integer :wins
       t.integer :losses

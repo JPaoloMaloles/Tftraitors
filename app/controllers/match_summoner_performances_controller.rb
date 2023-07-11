@@ -1,0 +1,2 @@
+class MatchSummonerPerformancesController < ApplicationController
+end

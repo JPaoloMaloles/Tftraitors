@@ -1,0 +1,1 @@
+json.partial! "match_summoner_performances/match_summoner_performance", match_summoner_performance: @match_summoner_performance

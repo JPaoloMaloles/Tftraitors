@@ -8,3 +8,5 @@ json.queu_id match.queu_id
 json.tft_game_type match.tft_game_type
 json.tft_set_core_name match.tft_set_core_name
 json.tft_set_number match.tft_set_number
+json.match_summoner_performances match.match_summoner_performances
+json.summoner_infos match.summoner_infos

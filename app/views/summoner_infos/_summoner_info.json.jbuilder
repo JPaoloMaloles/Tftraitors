@@ -7,3 +7,5 @@ json.riot_summoner_id summoner_info.riot_summoner_id
 json.summoner_name summoner_info.summoner_name
 json.wins summoner_info.wins
 json.losses summoner_info.losses
+json.match_summoner_performances summoner_info.match_summoner_performances
+json.matches summoner_info.matches

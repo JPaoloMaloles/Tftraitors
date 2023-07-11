@@ -20,10 +20,23 @@ Match.create!(
   data_version: "test_data_version",
   riot_match_id: "test_riot_match_id",
   game_datetime: 1,
-  game_length: 1,
+  game_length: 1.1,
   game_version: "test_game_version",
   queu_id: 1,
   tft_game_type: "test_tft_game_type",
   tft_set_core_name: "test_tft_set_core_name",
   tft_set_number: 1,
+)
+
+MatchSummonerPerformance.create!(
+  match_id: 1,
+  summoner_info_id: 1,
+  riot_match_id: "test_riot_match_id",
+  puuid: "test_puuid",
+  gold_left: 1,
+  last_round: 1,
+  level_placement: 1,
+  players_eliminated: 1,
+  time_eliminated: 1.1,
+  total_damage_to_players: 1,
 )

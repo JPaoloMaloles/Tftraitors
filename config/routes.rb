@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # get "/summoner_infos", controller: "summoner_infos", action: "index"
   resources :summoner_infos
   resources :matches
+  resources :match_summoner_performances
 end

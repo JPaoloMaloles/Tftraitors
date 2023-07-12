@@ -23,6 +23,10 @@ class MatchSummonerPerformancesController < ApplicationController
       players_eliminated: params["players_eliminated"],
       time_eliminated: params["time_eliminated"],
       total_damage_to_players: params["total_damage_to_players"],
+      first_augment: params["first_augment"],
+      second_augment: params["second_augment"],
+      third_augment: params["third_augment"],
+      companion_id: params["companion_id"],
     )
     render :show
   end
@@ -40,6 +44,10 @@ class MatchSummonerPerformancesController < ApplicationController
       players_eliminated: params["players_eliminated"] || @match_summoner_performance.players_eliminated,
       time_eliminated: params["time_eliminated"] || @match_summoner_performance.time_eliminated,
       total_damage_to_players: params["total_damage_to_players"] || @match_summoner_performance.total_damage_to_players,
+      first_augment: params["first_augment"] || @match_summoner_performance.first_augment,
+      second_augment: params["second_augment"] || @match_summoner_performance.second_augment,
+      third_augment: params["third_augment"] || @match_summoner_performance.third_augment,
+      companion_id: params["companion_id"] || @match_summoner_performance.companion_id,
     )
     render :show
   end

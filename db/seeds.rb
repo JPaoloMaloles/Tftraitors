@@ -39,4 +39,8 @@ MatchSummonerPerformance.create!(
   players_eliminated: 1,
   time_eliminated: 1.1,
   total_damage_to_players: 1,
+  first_augment: "test_first_augment",
+  second_augment: "test_second_augment",
+  third_augment: "test_third_augment",
+  companion_id: 1,
 )

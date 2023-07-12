@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.create!(name: "Test", email: "email@gmail.com", password: "password", password_confirmation: "password")
+
 SummonerInfo.create!(
   puuid: "test_puuid",
   tier: "test_tier",

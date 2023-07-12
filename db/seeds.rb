@@ -44,3 +44,83 @@ MatchSummonerPerformance.create!(
   third_augment: "test_third_augment",
   companion_id: 1,
 )
+#------------------------------------------------------------------------------------------
+SummonerInfo.create!(
+  puuid: "2test_puuid",
+  tier: "2test_tier",
+  rank: "2test_rank",
+  league_points: 2,
+  riot_summoner_id: "2test_summoner_id",
+  summoner_name: "2test_summoner_name",
+  wins: 2,
+  losses: 2,
+)
+
+Match.create!(
+  data_version: "2test_data_version",
+  riot_match_id: "2test_riot_match_id",
+  game_datetime: 2,
+  game_length: 2.2,
+  game_version: "2test_game_version",
+  queu_id: 2,
+  tft_game_type: "2test_tft_game_type",
+  tft_set_core_name: "2test_tft_set_core_name",
+  tft_set_number: 2,
+)
+
+MatchSummonerPerformance.create!(
+  match_id: 2,
+  summoner_info_id: 2,
+  riot_match_id: "2test_riot_match_id",
+  puuid: "2test_puuid",
+  gold_left: 2,
+  last_round: 2,
+  level_placement: 2,
+  players_eliminated: 2,
+  time_eliminated: 2.2,
+  total_damage_to_players: 2,
+  first_augment: "2test_first_augment",
+  second_augment: "2test_second_augment",
+  third_augment: "2test_third_augment",
+  companion_id: 2,
+)
+#------------------------------------------------------------------------------------------
+SummonerInfo.create!(
+  puuid: "3test_puuid",
+  tier: "3test_tier",
+  rank: "3test_rank",
+  league_points: 3,
+  riot_summoner_id: "3test_summoner_id",
+  summoner_name: "3test_summoner_name",
+  wins: 3,
+  losses: 3,
+)
+
+Match.create!(
+  data_version: "3test_data_version",
+  riot_match_id: "3test_riot_match_id",
+  game_datetime: 3,
+  game_length: 3.3,
+  game_version: "3test_game_version",
+  queu_id: 3,
+  tft_game_type: "3test_tft_game_type",
+  tft_set_core_name: "3test_tft_set_core_name",
+  tft_set_number: 3,
+)
+
+MatchSummonerPerformance.create!(
+  match_id: 3,
+  summoner_info_id: 3,
+  riot_match_id: "3test_riot_match_id",
+  puuid: "3test_puuid",
+  gold_left: 3,
+  last_round: 3,
+  level_placement: 3,
+  players_eliminated: 3,
+  time_eliminated: 3.3,
+  total_damage_to_players: 3,
+  first_augment: "3test_first_augment",
+  second_augment: "3test_second_augment",
+  third_augment: "3test_third_augment",
+  companion_id: 3,
+)

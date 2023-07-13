@@ -126,3 +126,32 @@ MatchSummonerPerformance.create!(
   third_augment: "3test_third_augment",
   companion_id: 3,
 )
+#------------------------------------------------------------------------------------------Another Match for Player 1
+Match.create!(
+  data_version: "test_data_version",
+  riot_match_id: "test_riot_match_id",
+  game_datetime: 4,
+  game_length: 4.4,
+  game_version: "test_game_version",
+  queu_id: 4,
+  tft_game_type: "test_tft_game_type",
+  tft_set_core_name: "test_tft_set_core_name",
+  tft_set_number: 4,
+)
+
+MatchSummonerPerformance.create!(
+  match_id: 4,
+  summoner_info_id: 1,
+  riot_match_id: "test_riot_match_id",
+  puuid: "test_puuid",
+  gold_left: 4,
+  last_round: 4,
+  level_placement: 4,
+  players_eliminated: 4,
+  time_eliminated: 4.4,
+  total_damage_to_players: 4,
+  first_augment: "test_first_augment",
+  second_augment: "test_second_augment",
+  third_augment: "test_third_augment",
+  companion_id: 4,
+)

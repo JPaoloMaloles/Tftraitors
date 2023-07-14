@@ -1,5 +1,5 @@
 class SummonerInfosController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show, :riot_create, :riot_test]
+  before_action :authenticate_user, except: [:index, :show, :riot_create, :riot_first]
 
   def show
     @summoner_info = SummonerInfo.find_by(id: params["id"])
@@ -107,7 +107,7 @@ class SummonerInfosController < ApplicationController
     render :show
   end
 
-  def riot_test
+  def riot_first
     require "http"
     p "region is: #{params["region"]}"
     p "summoner name is: #{params["summoner_name"]}"

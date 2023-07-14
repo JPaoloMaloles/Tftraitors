@@ -1,5 +1,5 @@
 class SummonerInfosController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show, :riot_create]
 
   def show
     @summoner_info = SummonerInfo.find_by(id: params["id"])
@@ -44,5 +44,66 @@ class SummonerInfosController < ApplicationController
     summoner_info = SummonerInfo.find_by(id: params["id"])
     summoner_info.destroy
     render json: { message: "Summoner Info was Destroyed" }
+  end
+
+  def riot_create
+    require "http"
+    region = "na1"
+    tft_region = "americas"
+    #https://{regionAbbv}.api.riotgames.com/{path}?{api_key}
+
+    #What happens when a user's profile is update, acquires all that summoner's info based on summoner_name and region.
+
+    #Finds player information based on Summoner Name (name displayed in client)
+    api_data = HTTP.get("https://#{region}.api.riotgames.com/tft/summoner/v1/summoners/by-name/#{ENV["SUMMONER_NAME"]}?api_key=#{ENV["RIOT_API_KEY"]}")
+    summoner_information = api_data.parse(:json)
+    puts
+    puts "Summoner Information --------------------------------------------------------------------------------------------------------------------"
+    puts
+    pp summoner_information
+
+    puuid = summoner_information["puuid"]
+    p puuid
+
+    summoner_id = summoner_information["id"]
+    puts "SUMMONER ID"
+    pp summoner_id
+    puts
+
+    api_data = HTTP.get("https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/#{summoner_id}?api_key=#{ENV["RIOT_API_KEY"]}")
+    profile_information = api_data.parse(:json)
+    puts
+    puts "Profile Information --------------------------------------------------------------------------------------------------------------------"
+    puts
+    pp profile_information
+    # #returns
+    # :queuType
+    # :tier
+    # :rank
+    # :leaguePoints
+    # :summonerID
+    # :summonerName
+    # :wins
+    # :losses
+    # :veteran
+    # :inactive
+    # :freshBlood
+    # :hotStreak
+
+    p "tier is"
+    p profile_information[0]["tier"]
+
+    @summoner_info = SummonerInfo.create(
+      puuid: puuid,
+      tier: profile_information[0]["tier"],
+      rank: profile_information[0]["rank"],
+      league_points: profile_information[0]["leaguePoints"],
+      riot_summoner_id: summoner_id,
+      summoner_name: profile_information[0]["summonerName"],
+      wins: profile_information[0]["wins"],
+      losses: profile_information[0]["losses"],
+    )
+
+    render :show
   end
 end

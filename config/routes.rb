@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :summoner_infos
   resources :matches
   resources :match_summoner_performances
+
+  get "/riot_first", controller: "summoner_infos", action: "riot_create"
 end

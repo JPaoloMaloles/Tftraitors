@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :match_summoner_performances
 
   get "/riot_first", controller: "summoner_infos", action: "riot_create"
-  post "/riot_test/:region/:summoner_name", to: "summoner_infos#riot_test"
+  # post "/riot_test/:region/:summoner_name", to: "summoner_infos#riot_test" #functional, post requests can be made using post at the proper url e.g. post request to riot_test/na1/Mortdog
+  post "/riot_test", to: "summoner_infos#riot_test"
 end

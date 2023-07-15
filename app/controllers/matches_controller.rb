@@ -62,7 +62,7 @@ class MatchesController < ApplicationController
     pp matches
     puts
 
-    render json: { message: matches }
+    render json: { riot_match_ids: matches }
 
     # #returns
     # :an_unnamed_list_of_strings

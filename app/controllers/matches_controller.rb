@@ -50,8 +50,8 @@ class MatchesController < ApplicationController
 
   def riot_second
     require "http"
-    p "region is: #{params["tftRegion"]}"
-    p "summoner name is: #{params["puuid"]}"
+    p "tftRegion is: #{params["tftRegion"]}"
+    p "puuid is: #{params["puuid"]}"
 
     #Finds Match IDS
     api_data = HTTP.get("https://#{params["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/by-puuid/#{params["puuid"]}/ids?start=0&count=20&api_key=#{ENV["RIOT_API_KEY"]}")

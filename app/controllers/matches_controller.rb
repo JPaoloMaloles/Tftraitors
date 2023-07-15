@@ -62,7 +62,7 @@ class MatchesController < ApplicationController
     pp matches
     puts
 
-    render json: { riot_match_ids: matches, summonerInfo_id: params["summonerInfo_id"] }
+    render json: { region: params["tftRegion"], riot_match_ids: matches, summonerInfo_id: params["summonerInfo_id"] }
 
     # #returns
     # :an_unnamed_list_of_strings

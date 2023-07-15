@@ -62,6 +62,8 @@ class MatchesController < ApplicationController
     pp matches
     puts
 
+    render json: { message: matches }
+
     # #returns
     # :an_unnamed_list_of_strings
   end

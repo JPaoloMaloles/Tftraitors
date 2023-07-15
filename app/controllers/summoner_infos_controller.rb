@@ -131,7 +131,7 @@ class SummonerInfosController < ApplicationController
     pp summoner_id
     puts
 
-    api_data = HTTP.get("https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/#{summoner_id}?api_key=#{ENV["RIOT_API_KEY"]}")
+    api_data = HTTP.get("https://#{params["region"]}.api.riotgames.com/tft/league/v1/entries/by-summoner/#{summoner_id}?api_key=#{ENV["RIOT_API_KEY"]}")
     profile_information = api_data.parse(:json)
     puts
     puts "Profile Information --------------------------------------------------------------------------------------------------------------------"

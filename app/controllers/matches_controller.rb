@@ -62,14 +62,14 @@ class MatchesController < ApplicationController
     pp matches
     puts
 
-    render json: { tft_region: params["tftRegion"], riot_match_ids: matches, summonerInfo_id: params["summonerInfo_id"] }
+    render json: { tftRegion: params["tftRegion"], riot_match_ids: matches, summonerInfo_id: params["summonerInfo_id"] }
 
     # #returns
     # :an_unnamed_list_of_strings
   end
 
   def riot_third
-    render json: { message: "this is riot_third" }
+    render json: { message: "aaa" }
 
     # api_data = HTTP.get("https://#{params["tft_region"]}.api.riotgames.com/tft/match/v1/matches/#{params[match}?api_key=#{ENV["RIOT_API_KEY"]}")
     # single_match = api_data.parse(:json)

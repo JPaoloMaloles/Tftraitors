@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show, :riot_second]
 
   def show
     @match = Match.find_by(id: params["id"])
@@ -46,5 +46,23 @@ class MatchesController < ApplicationController
     match = Match.find_by(id: params["id"])
     match.destroy
     render json: { message: "Match is destroyed" }
+  end
+
+  def riot_second
+    require "http"
+    p "region is: #{params["tftRegion"]}"
+    p "summoner name is: #{params["puuid"]}"
+
+    #Finds Match IDS
+    api_data = HTTP.get("https://#{params["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/by-puuid/#{params["puuid"]}/ids?start=0&count=20&api_key=#{ENV["RIOT_API_KEY"]}")
+    matches = api_data.parse(:json)
+    puts
+    puts "Match ID's --------------------------------------------------------------------------------------------------------------------"
+    puts
+    pp matches
+    puts
+
+    # #returns
+    # :an_unnamed_list_of_strings
   end
 end

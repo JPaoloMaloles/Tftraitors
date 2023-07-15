@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   # post "/riot_first/:region/:summoner_name", to: "summoner_infos#riot_first" #functional, post requests can be made using post at the proper url e.g. post request to riot_first/na1/Mortdog
   post "/riot_first", to: "summoner_infos#riot_first"
   get "/riot_second", to: "matches#riot_second"
+  post "/riot_third", to: "matches#riot_third"
 end

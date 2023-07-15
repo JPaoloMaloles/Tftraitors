@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show, :riot_second]
+  before_action :authenticate_user, except: [:index, :show, :riot_second, :riot_third]
 
   def show
     @match = Match.find_by(id: params["id"])
@@ -66,5 +66,9 @@ class MatchesController < ApplicationController
 
     # #returns
     # :an_unnamed_list_of_strings
+  end
+
+  def riot_third
+    render json: { message: "this is riot_third" }
   end
 end

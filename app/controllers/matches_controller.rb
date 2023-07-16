@@ -69,69 +69,29 @@ class MatchesController < ApplicationController
   end
 
   def riot_third
-    p "tftRegion: #{params["tftRegion"]}"
-    p "riot_match_id: #{params["riot_match_id"]}"
-    p "summonerInfo_id: #{params["summonerInfo_id"]}"
+    p "tftRegion: #{params["params"]["tftRegion"]}"
+    p "riot_match_id: #{params["params"]["riot_match_id"]}"
+    p "summonerInfo_id: #{params["params"]["summonerInfo_id"]}"
+    single_match = false
 
-    # p "https://#{params["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}"
-    # api_data = HTTP.get("https://#{params["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
-
-    api_data = HTTP.get("https://americas.api.riotgames.com/tft/match/v1/matches/NA1_4702931242?api_key=#{ENV["RIOT_API_KEY"]}")
+    api_data = HTTP.get("https://#{params["params"]["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["params"]["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
     single_match = api_data.parse(:json)
 
-    # single_match = false
-    # single_match = api_data.parse(:json)
-    # render json: { ftRegion: params["tftRegion"], riot_match_id: params["riot_match_id"], summonerInfo_id: params["summonerInfo_id"] }
-
-    # render json: { message: single_match || "failure" }
-
-    # render json: single_match
-
-    # render json: { message: single_match["info"]["game_datetime"] }
-
-    @match = Match.create(
-      data_version: single_match["metadata"]["data_version"],
-      riot_match_id: single_match["metadata"]["match_id"],
-      game_datetime: single_match["info"]["game_datetime"],
-      game_length: single_match["info"]["game_length"],
-      game_version: single_match["info"]["game_version"],
-      queu_id: single_match["info"]["queu_id"],
-      tft_game_type: single_match["info"]["tft_game_type"],
-      tft_set_core_name: single_match["info"]["tft_set_core_name"],
-      tft_set_number: single_match["info"]["tft_set_number"],
-    )
-
-    # data_version: single_match["metadata"]["data_version"],
-    # riot_match_id: single_match["metadata"]["match_id"],
-    # game_datetime: single_match["info"]["game_datetime"],
-    # game_length: single_match["info"]["game_length"],
-    # game_version: single_match["info"]["game_version"],
-    # queu_id: single_match["info"]["queu_id"],
-    # tft_game_type: single_match["info"]["tft_game_type"],
-    # tft_set_core_name: single_match["info"]["tft_set_core_name"],
-    # tft_set_number: single_match["info"]["tft_set_number"],
-    # render json: { message: single_match["metadata"]["data_version"] }
-    # @match.update(
-    #   data_version: single_match["metadata"]["data_version"],
-    #   riot_match_id: single_match["metadata"]["match_id"],
-    # )
-    # @match.update(
-    #   game_datetime: single_match["info"]["game_datetime"],
-    # )
-    # @match.update(
-    #   game_length: single_match["info"]["game_length"],
-    # )
-    # @match.update(
-    #   game_version: single_match["info"]["game_version"],
-    #   queu_id: single_match["info"]["queu_id"],
-    # )
-    # @match.update(
-    #   tft_game_type: single_match["info"]["tft_game_type"],
-    #   tft_set_core_name: single_match["info"]["tft_set_core_name"],
-    # )
-    # @match.update(
-    #   tft_set_number: single_match["info"]["tft_set_number"],
-    # )
-    render :show
+    if single_match
+      @match = Match.create(
+        data_version: single_match["metadata"]["data_version"],
+        riot_match_id: single_match["metadata"]["match_id"],
+        game_datetime: single_match["info"]["game_datetime"],
+        game_length: single_match["info"]["game_length"],
+        game_version: single_match["info"]["game_version"],
+        queu_id: single_match["info"]["queue_id"],
+        tft_game_type: single_match["info"]["tft_game_type"],
+        tft_set_core_name: single_match["info"]["tft_set_core_name"],
+        tft_set_number: single_match["info"]["tft_set_number"],
+      )
+      render :show
+    else
+      render json: { message: "unable to retrieve match" }
+    end
   end
 end

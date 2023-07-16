@@ -75,22 +75,25 @@ class MatchSummonerPerformancesController < ApplicationController
     # render json: single_match["info"]["participants"]
 
     single_match["info"]["participants"].each do |participant|
-      @match_summoner_performance = MatchSummonerPerformance.create(
-        match_id: params["params"]["match_id"],
-        summoner_info_id: params["params"]["summonerInfo_id"],
-        riot_match_id: single_match["metadata"]["match_id"],
-        puuid: participant["puuid"],
-        gold_left: participant["gold_left"],
-        last_round: participant["last_round"],
-        level_placement: participant["placement"],
-        players_eliminated: participant["players_eliminated"],
-        time_eliminated: participant["time_eliminated"],
-        total_damage_to_players: participant["total_damage_to_players"],
-        first_augment: participant["augments"][0] || "none",
-        second_augment: participant["augments"][1] || "none",
-        third_augment: participant["augments"][2] || "none",
-        companion_id: participant["companion_id"] || "TBA",
-      )
+      p "@@@@@@@@@@@@@@@@@@@@@@@@@ participant[puuid]: #{participant["puuid"]}, #{params["params"]["puuid"]}"
+      if participant["puuid"] == params["params"]["puuid"]
+        @match_summoner_performance = MatchSummonerPerformance.create(
+          match_id: params["params"]["match_id"],
+          summoner_info_id: params["params"]["summonerInfo_id"],
+          riot_match_id: single_match["metadata"]["match_id"],
+          puuid: participant["puuid"],
+          gold_left: participant["gold_left"],
+          last_round: participant["last_round"],
+          level_placement: participant["placement"],
+          players_eliminated: participant["players_eliminated"],
+          time_eliminated: participant["time_eliminated"],
+          total_damage_to_players: participant["total_damage_to_players"],
+          first_augment: participant["augments"][0] || "none",
+          second_augment: participant["augments"][1] || "none",
+          third_augment: participant["augments"][2] || "none",
+          companion_id: participant["companion_id"] || "TBA",
+        )
+      end
     end
     @match_summoner_performances = MatchSummonerPerformance.where(match_id: params["params"]["match_id"])
     render :index

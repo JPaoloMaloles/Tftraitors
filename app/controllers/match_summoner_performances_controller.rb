@@ -64,6 +64,32 @@ class MatchSummonerPerformancesController < ApplicationController
     p "riot_match_id: #{params["params"]["riot_match_id"]}"
     p "summonerInfo_id: #{params["params"]["summonerInfo_id"]}"
     p "match_id: #{params["params"]["match_id"]}"
-    render json: { message: "riot_fourth" }
+
+    single_match = false
+
+    api_data = HTTP.get("https://#{params["params"]["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["params"]["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
+    single_match = api_data.parse(:json)
+
+    if single_match
+      @match_summoner_performance = MatchSummonerPerformance.create(
+        match_id: params["params"]["match_id"],
+        summoner_info_id: params["params"]["summonerInfo_id"],
+        riot_match_id: "a",
+        puuid: "a",
+        gold_left: "a",
+        last_round: "a",
+        level_placement: "a",
+        players_eliminated: "a",
+        time_eliminated: "a",
+        total_damage_to_players: "a",
+        first_augment: "a",
+        second_augment: "a",
+        third_augment: "a",
+        companion_id: "a",
+      )
+      render :show
+    else
+      render json: { message: "unable to retrieve MatchSummonerPerformance" }
+    end
   end
 end

@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   post "/riot_first", to: "summoner_infos#riot_first"
   get "/riot_second", to: "matches#riot_second"
   post "/riot_third", to: "matches#riot_third"
+  post "/riot_fourth", to: "match_summoner_performances#riot_fourth"
 end

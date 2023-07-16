@@ -1,5 +1,5 @@
 class MatchSummonerPerformancesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show, :riot_fourth]
 
   def show
     @match_summoner_performance = MatchSummonerPerformance.find_by(id: params["id"])
@@ -56,5 +56,10 @@ class MatchSummonerPerformancesController < ApplicationController
     match_summoner_performance = MatchSummonerPerformance.find_by(id: params["id"])
     match_summoner_performance.destroy
     render json: { message: "MatchSummonerPerformance has been destroyed" }
+  end
+
+  def riot_fourth
+    require "http"
+    render json: { message: "riot_fourth" }
   end
 end

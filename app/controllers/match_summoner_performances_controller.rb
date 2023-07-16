@@ -60,15 +60,15 @@ class MatchSummonerPerformancesController < ApplicationController
 
   def riot_fourth
     require "http"
-    # p "tftRegion: #{params["params"]["tftRegion"]}"
-    # p "riot_match_id: #{params["params"]["riot_match_id"]}"
-    # p "summonerInfo_id: #{params["params"]["summonerInfo_id"]}"
-    # p "match_id: #{params["params"]["match_id"]}"
+    p "tftRegion: #{params["params"]["tftRegion"]}"
+    p "riot_match_id: #{params["params"]["riot_match_id"]}"
+    p "summonerInfo_id: #{params["params"]["summonerInfo_id"]}"
+    p "match_id: #{params["params"]["match_id"]}"
 
     single_match = false
 
     # api_data = HTTP.get("https://#{params["params"]["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["params"]["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
-    api_data = HTTP.get("https://americas.api.riotgames.com/tft/match/v1/matches/NA1_4702931242?api_key=#{ENV["RIOT_API_KEY"]}")
+    api_data = HTTP.get("https://#{params["params"]["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["params"]["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
     single_match = api_data.parse(:json)
 
     # single_match["info"]
@@ -76,8 +76,8 @@ class MatchSummonerPerformancesController < ApplicationController
 
     single_match["info"]["participants"].each do |participant|
       @match_summoner_performance = MatchSummonerPerformance.create(
-        match_id: 3,
-        summoner_info_id: 3,
+        match_id: params["params"]["match_id"],
+        summoner_info_id: params["params"]["summonerInfo_id"],
         riot_match_id: single_match["metadata"]["match_id"],
         puuid: participant["puuid"],
         gold_left: participant["gold_left"],
@@ -92,7 +92,7 @@ class MatchSummonerPerformancesController < ApplicationController
         companion_id: participant["companion_id"] || "TBA",
       )
     end
-    @match_summoner_performances = MatchSummonerPerformance.where(match_id: 3)
+    @match_summoner_performances = MatchSummonerPerformance.where(match_id: params["params"]["match_id"])
     render :index
 
     # if single_match

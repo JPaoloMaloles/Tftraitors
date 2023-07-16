@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show, :riot_second, :riot_third]
+  before_action :authenticate_user, except: [:index, :show]
   require "http"
 
   def show

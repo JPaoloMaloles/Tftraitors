@@ -87,6 +87,8 @@ class MatchesController < ApplicationController
 
     # render json: single_match
 
+    # render json: { message: single_match["info"]["game_datetime"] }
+
     @match = Match.create(
       data_version: single_match["metadata"]["data_version"],
       riot_match_id: single_match["metadata"]["match_id"],

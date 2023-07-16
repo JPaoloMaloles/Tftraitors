@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_164100) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_16_011238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_164100) do
   create_table "matches", force: :cascade do |t|
     t.string "data_version"
     t.string "riot_match_id"
-    t.integer "game_datetime"
+    t.bigint "game_datetime"
     t.float "game_length"
     t.string "game_version"
     t.integer "queu_id"

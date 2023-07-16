@@ -60,6 +60,10 @@ class MatchSummonerPerformancesController < ApplicationController
 
   def riot_fourth
     require "http"
+    p "tftRegion: #{params["params"]["tftRegion"]}"
+    p "riot_match_id: #{params["params"]["riot_match_id"]}"
+    p "summonerInfo_id: #{params["params"]["summonerInfo_id"]}"
+    p "match_id: #{params["params"]["match_id"]}"
     render json: { message: "riot_fourth" }
   end
 end

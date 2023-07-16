@@ -87,8 +87,8 @@ class MatchSummonerPerformancesController < ApplicationController
         time_eliminated: participant["time_eliminated"],
         total_damage_to_players: participant["total_damage_to_players"],
         first_augment: participant["augments"][0] || "none",
-        second_augment: participant["augments"] || "none",
-        third_augment: participant["augments"] || "none",
+        second_augment: participant["augments"][1] || "none",
+        third_augment: participant["augments"][2] || "none",
         companion_id: participant["companion_id"] || "TBA",
       )
     end

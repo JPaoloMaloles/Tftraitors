@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user, except: [:index, :show, :riot_second, :riot_third]
+  require "http"
 
   def show
     @match = Match.find_by(id: params["id"])
@@ -49,7 +50,6 @@ class MatchesController < ApplicationController
   end
 
   def riot_second
-    require "http"
     p "tftRegion is: #{params["tftRegion"]}"
     p "puuid is: #{params["puuid"]}"
 
@@ -69,11 +69,15 @@ class MatchesController < ApplicationController
   end
 
   def riot_third
-    render json: { message: "aaa" }
+    p "tftRegion: #{params["tftRegion"]}"
+    p "riot_match_id: #{params["riot_match_id"]}"
+    p "summonerInfo_id: #{params["summonerInfo_id"]}"
 
-    # api_data = HTTP.get("https://#{params["tft_region"]}.api.riotgames.com/tft/match/v1/matches/#{params[match}?api_key=#{ENV["RIOT_API_KEY"]}")
+    # p "https://#{params["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}"
+    # api_data = HTTP.get("https://#{params["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
     # single_match = api_data.parse(:json)
 
+    # pp single_match
     # @match = Match.create(
     #   data_version: params["data_version"],
     #   riot_match_id: params["riot_match_id"],

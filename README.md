@@ -1,24 +1,12 @@
-# README
+[backend repo](https://github.com/JPaoloMaloles/Tftraitors_frontend)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tftraitors is project to create a Teamfight Tactics (tft) datalytics site that compiles a player's worst comps and performances whether it be for good or evil. 
+Tftraitors is made using a React frontend and Ruby on Rails backend.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h1> Currently Features:</h1>
+<ul>
+  <li> User authorization and authentication </li>
+  <li> Imports of a player's 20 most recent matches from any of Riot's 16 servers using asynchronous web requests </li>
+  <li> Routes using react-router-dom </li>
+  <li> A beautiful javascript display</li>
+</ul>

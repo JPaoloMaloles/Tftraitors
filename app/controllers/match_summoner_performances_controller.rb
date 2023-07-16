@@ -71,29 +71,28 @@ class MatchSummonerPerformancesController < ApplicationController
     api_data = HTTP.get("https://americas.api.riotgames.com/tft/match/v1/matches/NA1_4702931242?api_key=#{ENV["RIOT_API_KEY"]}")
     single_match = api_data.parse(:json)
 
-    test_match_id = 888
     # single_match["info"]
     # render json: single_match["info"]["participants"]
 
-    single_match["info"]["participants"].each do |participant_info|
+    single_match["info"]["participants"].each do |participant|
       @match_summoner_performance = MatchSummonerPerformance.create(
-        match_id: 1,
-        summoner_info_id: 1,
-        riot_match_id: "a",
-        puuid: "a",
-        gold_left: "a",
-        last_round: "a",
-        level_placement: "a",
-        players_eliminated: "a",
-        time_eliminated: "a",
-        total_damage_to_players: "a",
-        first_augment: "a",
-        second_augment: "a",
-        third_augment: "a",
-        companion_id: "a",
+        match_id: 3,
+        summoner_info_id: 3,
+        riot_match_id: single_match["metadata"]["match_id"],
+        puuid: participant["puuid"],
+        gold_left: participant["gold_left"],
+        last_round: participant["last_round"],
+        level_placement: participant["placement"],
+        players_eliminated: participant["players_eliminated"],
+        time_eliminated: participant["time_eliminated"],
+        total_damage_to_players: participant["total_damage_to_players"],
+        first_augment: participant["augments"][0] || "none",
+        second_augment: participant["augments"] || "none",
+        third_augment: participant["augments"] || "none",
+        companion_id: participant["companion_id"] || "TBA",
       )
     end
-    @match_summoner_performances = MatchSummonerPerformance.where(match_id: 1)
+    @match_summoner_performances = MatchSummonerPerformance.where(match_id: 3)
     render :index
 
     # if single_match

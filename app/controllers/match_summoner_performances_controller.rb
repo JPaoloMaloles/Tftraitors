@@ -1,5 +1,5 @@
 class MatchSummonerPerformancesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show, :riot_fourth, :create]
 
   def show
     @match_summoner_performance = MatchSummonerPerformance.find_by(id: params["id"])
@@ -19,7 +19,8 @@ class MatchSummonerPerformancesController < ApplicationController
       puuid: params["puuid"],
       gold_left: params["gold_left"],
       last_round: params["last_round"],
-      level_placement: params["level_placement"],
+      level: params["level"],
+      placement: params["placement"],
       players_eliminated: params["players_eliminated"],
       time_eliminated: params["time_eliminated"],
       total_damage_to_players: params["total_damage_to_players"],
@@ -40,7 +41,8 @@ class MatchSummonerPerformancesController < ApplicationController
       puuid: params["puuid"] || @match_summoner_performance.puuid,
       gold_left: params["gold_left"] || @match_summoner_performance.gold_left,
       last_round: params["last_round"] || @match_summoner_performance.last_round,
-      level_placement: params["level_placement"] || @match_summoner_performance.level_placement,
+      level: params["placement"] || @match_summoner_performance.level,
+      placement: params["placement"] || @match_summoner_performance.placement,
       players_eliminated: params["players_eliminated"] || @match_summoner_performance.players_eliminated,
       time_eliminated: params["time_eliminated"] || @match_summoner_performance.time_eliminated,
       total_damage_to_players: params["total_damage_to_players"] || @match_summoner_performance.total_damage_to_players,
@@ -67,7 +69,7 @@ class MatchSummonerPerformancesController < ApplicationController
 
     single_match = false
 
-    # api_data = HTTP.get("https://#{params["params"]["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["params"]["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
+    # api_data = HTTP.get("https://americas.api.riotgames.com/tft/match/v1/matches/#{match_id}?api_key=#{ENV["RIOT_API_KEY"]}")
     api_data = HTTP.get("https://#{params["params"]["tftRegion"]}.api.riotgames.com/tft/match/v1/matches/#{params["params"]["riot_match_id"]}?api_key=#{ENV["RIOT_API_KEY"]}")
     single_match = api_data.parse(:json)
 
@@ -84,7 +86,8 @@ class MatchSummonerPerformancesController < ApplicationController
           puuid: participant["puuid"],
           gold_left: participant["gold_left"],
           last_round: participant["last_round"],
-          level_placement: participant["placement"],
+          level: participant["level"],
+          placement: participant["placement"],
           players_eliminated: participant["players_eliminated"],
           time_eliminated: participant["time_eliminated"],
           total_damage_to_players: participant["total_damage_to_players"],
@@ -106,7 +109,7 @@ class MatchSummonerPerformancesController < ApplicationController
     #   puuid: "a",
     #   gold_left: "a",
     #   last_round: "a",
-    #   level_placement: "a",
+    #   placement: "a",
     #   players_eliminated: "a",
     #   time_eliminated: "a",
     #   total_damage_to_players: "a",

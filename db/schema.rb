@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_164928) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_183538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_164928) do
     t.string "puuid"
     t.integer "gold_left"
     t.integer "last_round"
-    t.integer "level_placement"
+    t.integer "placement"
     t.integer "players_eliminated"
     t.float "time_eliminated"
     t.integer "total_damage_to_players"
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_164928) do
     t.string "second_augment"
     t.string "third_augment"
     t.integer "companion_id"
+    t.integer "level"
   end
 
   create_table "matches", force: :cascade do |t|

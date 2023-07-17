@@ -1,5 +1,5 @@
 class MatchSummonerPerformancesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show, :riot_fourth, :create]
+  before_action :authenticate_user, except: [:index, :show]
 
   def show
     @match_summoner_performance = MatchSummonerPerformance.find_by(id: params["id"])
@@ -100,27 +100,5 @@ class MatchSummonerPerformancesController < ApplicationController
     end
     @match_summoner_performances = MatchSummonerPerformance.where(match_id: params["params"]["match_id"])
     render :index
-
-    # if single_match
-    # @match_summoner_performance = MatchSummonerPerformance.create(
-    #   match_id: params["params"]["match_id"],
-    #   summoner_info_id: params["params"]["summonerInfo_id"],
-    #   riot_match_id: "a",
-    #   puuid: "a",
-    #   gold_left: "a",
-    #   last_round: "a",
-    #   placement: "a",
-    #   players_eliminated: "a",
-    #   time_eliminated: "a",
-    #   total_damage_to_players: "a",
-    #   first_augment: "a",
-    #   second_augment: "a",
-    #   third_augment: "a",
-    #   companion_id: "a",
-    # )
-    # render :show
-    # else
-    #   render json: { message: "unable to retrieve MatchSummonerPerformance" }
-    # end
   end
 end

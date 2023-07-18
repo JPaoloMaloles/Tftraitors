@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get "/riot_second", to: "matches#riot_second"
   post "/riot_third", to: "matches#riot_third"
   post "/riot_fourth", to: "match_summoner_performances#riot_fourth"
+  get "/profile/:region/:summoner_name", to: "summoner_infos#show_profile"
 end

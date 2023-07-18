@@ -1,8 +1,13 @@
 class SummonerInfosController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show, :show_profile]
 
   def show
     @summoner_info = SummonerInfo.find_by(id: params["id"])
+    render :show
+  end
+
+  def show_profile
+    @summoner_info = SummonerInfo.where(region: params["region"]).find_by(summoner_name: params["summoner_name"])
     render :show
   end
 

@@ -1,5 +1,6 @@
 json.id summoner_info.id
 json.puuid summoner_info.puuid
+json.region summoner_info.region
 json.tier summoner_info.tier
 json.rank summoner_info.rank
 json.league_points summoner_info.league_points

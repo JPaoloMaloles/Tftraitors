@@ -14,6 +14,7 @@ class SummonerInfosController < ApplicationController
   def create
     @summoner_info = SummonerInfo.create(
       puuid: params["puuid"],
+      region: params["region"],
       tier: params["tier"],
       rank: params["rank"],
       league_points: params["league_points"],
@@ -29,6 +30,7 @@ class SummonerInfosController < ApplicationController
     @summoner_info = SummonerInfo.find_by(id: params["id"])
     @summoner_info.update(
       puuid: params["puuid"] || @summoner_info.puuid,
+      region: params["region"] || @summoner_info.region,
       tier: params["tier"] || @summoner_info.tier,
       rank: params["rank"] || @summoner_info.rank,
       league_points: params["league_points"] || @summoner_info.league_points,
@@ -95,6 +97,7 @@ class SummonerInfosController < ApplicationController
 
     @summoner_info = SummonerInfo.create(
       puuid: puuid,
+      region: region,
       tier: profile_information[0]["tier"],
       rank: profile_information[0]["rank"],
       league_points: profile_information[0]["leaguePoints"],
@@ -156,6 +159,7 @@ class SummonerInfosController < ApplicationController
 
     @summoner_info = SummonerInfo.create(
       puuid: puuid,
+      region: params["region"],
       tier: profile_information[0]["tier"],
       rank: profile_information[0]["rank"],
       league_points: profile_information[0]["leaguePoints"],

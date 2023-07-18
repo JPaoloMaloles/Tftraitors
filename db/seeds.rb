@@ -9,6 +9,7 @@ User.create!(name: "Test", email: "email@gmail.com", password: "password", passw
 
 SummonerInfo.create!(
   puuid: "test_puuid",
+  region: "test_region",
   tier: "test_tier",
   rank: "test_rank",
   league_points: 1,
@@ -50,6 +51,7 @@ MatchSummonerPerformance.create!(
 #------------------------------------------------------------------------------------------
 SummonerInfo.create!(
   puuid: "2test_puuid",
+  region: "2test_region",
   tier: "2test_tier",
   rank: "2test_rank",
   league_points: 2,
@@ -91,6 +93,7 @@ MatchSummonerPerformance.create!(
 #------------------------------------------------------------------------------------------
 SummonerInfo.create!(
   puuid: "3test_puuid",
+  region: "3test_region",
   tier: "3test_tier",
   rank: "3test_rank",
   league_points: 3,

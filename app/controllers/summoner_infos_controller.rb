@@ -27,6 +27,7 @@ class SummonerInfosController < ApplicationController
       summoner_name: params["summoner_name"],
       wins: params["wins"],
       losses: params["losses"],
+      profile_icon_id: params["profile_icon_id"],
     )
     render :show
   end
@@ -43,6 +44,7 @@ class SummonerInfosController < ApplicationController
       summoner_name: params["summoner_name"] || @summoner_info.summoner_name,
       wins: params["wins"] || @summoner_info.wins,
       losses: params["losses"] || @summoner_info.losses,
+      profile_icon_id: params["profile_icon_id"] || @summoner_info.profile_icon_id,
     )
     render :show
   end
@@ -110,6 +112,7 @@ class SummonerInfosController < ApplicationController
       summoner_name: profile_information[0]["summonerName"],
       wins: profile_information[0]["wins"],
       losses: profile_information[0]["losses"],
+      profile_icon_id: profile_information[0]["profileIconId"],
     )
 
     render :show
@@ -138,6 +141,8 @@ class SummonerInfosController < ApplicationController
     puts "SUMMONER ID"
     pp summoner_id
     puts
+
+    profile_icon_id = summoner_information["profileIconId"]
 
     api_data = HTTP.get("https://#{params["region"]}.api.riotgames.com/tft/league/v1/entries/by-summoner/#{summoner_id}?api_key=#{ENV["RIOT_API_KEY"]}")
     profile_information = api_data.parse(:json)
@@ -172,6 +177,7 @@ class SummonerInfosController < ApplicationController
       summoner_name: profile_information[0]["summonerName"],
       wins: profile_information[0]["wins"],
       losses: profile_information[0]["losses"],
+      profile_icon_id: profile_icon_id,
     )
 
     render :show

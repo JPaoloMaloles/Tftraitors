@@ -17,6 +17,7 @@ SummonerInfo.create!(
   summoner_name: "test_summoner_name",
   wins: 1,
   losses: 1,
+  profile_icon_id: 1,
 )
 
 Match.create!(
@@ -59,6 +60,7 @@ SummonerInfo.create!(
   summoner_name: "2test_summoner_name",
   wins: 2,
   losses: 2,
+  profile_icon_id: 2,
 )
 
 Match.create!(
@@ -101,6 +103,7 @@ SummonerInfo.create!(
   summoner_name: "3test_summoner_name",
   wins: 3,
   losses: 3,
+  profile_icon_id: 3,
 )
 
 Match.create!(

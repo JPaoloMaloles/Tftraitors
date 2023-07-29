@@ -94,7 +94,7 @@ class MatchSummonerPerformancesController < ApplicationController
           first_augment: participant["augments"][0] || "none",
           second_augment: participant["augments"][1] || "none",
           third_augment: participant["augments"][2] || "none",
-          companion_id: participant["companion_id"] || "TBA",
+          companion_id: participant["companion"]["item_ID"] || "TBA",
         )
       end
     end

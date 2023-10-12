@@ -2,28 +2,36 @@ class MatchSummonerPerformance < ApplicationRecord
   belongs_to :match
   belongs_to :summoner_info
 
-  def parse_augment(augment)
+  def parse_augment_image(augment)
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    augment = augment.to_s
+    puts augment
+    puts augment.class
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     parsed_augment = augment.split(/(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|(?<=[0-9])(?=[A-Z][a-z])|(?<=[a-zA-Z])(?=[0-9])|(?<=[_])/)
     stitched_augment = ""
     index = 3
-    while index < first_type_string.length
-      puts first_type_string[index]
+    while index < parsed_augment.length
+      puts parsed_augment[index]
       puts "index is #{index}"
-      puts "length is #{first_type_string.length}"
-      if index < first_type_string.length - 1
+      puts "length is #{parsed_augment.length}"
+      if index < parsed_augment.length - 1
         puts "YES"
-        stitched_augment = stitched_augment + first_type_string[index] + "-"
+        stitched_augment = stitched_augment + parsed_augment[index] + "-"
       else
-        if first_type_string[index] == "1"
+        if parsed_augment[index] == "1"
           stitched_augment = stitched_augment + "I"
-        elsif first_type_string[index] == "2"
+        elsif parsed_augment[index] == "2"
           stitched_augment = stitched_augment + "II"
-        else
+        elsif parsed_augment[index] == "3"
           stitched_augment = stitched_augment + "III"
+        else
+          stitched_augment = stitched_augment + parsed_augment[index]
         end
       end
       index += 1
     end
+    stitched_augment = stitched_augment + ".TFT_Set#{parsed_augment[1][0]}.png"
     return stitched_augment
   end
 end

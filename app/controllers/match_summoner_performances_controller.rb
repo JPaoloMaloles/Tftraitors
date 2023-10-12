@@ -96,6 +96,11 @@ class MatchSummonerPerformancesController < ApplicationController
           third_augment: participant["augments"][2] || "none",
           companion_id: participant["companion"]["item_ID"] || "TBA",
         )
+        @match_summoner_performance.update(
+          first_augment: @match_summoner_performance.parse_augment_image(@match_summoner_performance.first_augment),
+          second_augment: @match_summoner_performance.parse_augment_image(@match_summoner_performance.second_augment),
+          third_augment: @match_summoner_performance.parse_augment_image(@match_summoner_performance.third_augment),
+        )
       end
     end
     @match_summoner_performances = MatchSummonerPerformance.where(match_id: params["params"]["match_id"])

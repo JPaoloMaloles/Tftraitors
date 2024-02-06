@@ -1,2 +1,14 @@
-json.extract! unit, :id, :created_at, :updated_at
-json.url unit_url(unit, format: :json)
+json.id unit.id
+json.character_id_name unit.character_id_name
+json.item_names unit.item_names
+json.name unit.name
+json.rarity unit.rarity
+json.tier unit.tier
+
+
+:id
+:character_id_name
+:item_names
+:name
+:rarity
+:tier

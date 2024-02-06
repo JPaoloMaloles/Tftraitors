@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_232509) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_114454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_232509) do
     t.string "third_augment"
     t.integer "companion_id"
     t.integer "level"
+    t.text "traits", default: [], array: true
+    t.text "units", default: [], array: true
+    t.integer "traits_id"
+    t.integer "units_id"
   end
 
   create_table "matches", force: :cascade do |t|

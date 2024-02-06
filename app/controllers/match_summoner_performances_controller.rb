@@ -95,6 +95,8 @@ class MatchSummonerPerformancesController < ApplicationController
           second_augment: participant["augments"][1] || "none",
           third_augment: participant["augments"][2] || "none",
           companion_id: participant["companion"]["item_ID"] || "TBA",
+          traits_id: 0,
+          units_id: 0,
         )
         @match_summoner_performance.update(
           first_augment: @match_summoner_performance.parse_augment_image(@match_summoner_performance.first_augment),

@@ -48,6 +48,8 @@ MatchSummonerPerformance.create!(
   second_augment: "test_second_augment",
   third_augment: "test_third_augment",
   companion_id: 1,
+  traits_id: 1,
+  units_id: 1,
 )
 #------------------------------------------------------------------------------------------
 SummonerInfo.create!(
@@ -91,6 +93,8 @@ MatchSummonerPerformance.create!(
   second_augment: "2test_second_augment",
   third_augment: "2test_third_augment",
   companion_id: 2,
+  traits_id: 2,
+  units_id: 2,
 )
 #------------------------------------------------------------------------------------------
 SummonerInfo.create!(
@@ -134,6 +138,8 @@ MatchSummonerPerformance.create!(
   second_augment: "3test_second_augment",
   third_augment: "3test_third_augment",
   companion_id: 3,
+  traits_id: 3,
+  units_id: 3,
 )
 #------------------------------------------------------------------------------------------Another Match for Player 1
 Match.create!(
@@ -164,4 +170,6 @@ MatchSummonerPerformance.create!(
   second_augment: "test_second_augment",
   third_augment: "test_third_augment",
   companion_id: 4,
+  traits_id: 4,
+  units_id: 4,
 )

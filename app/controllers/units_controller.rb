@@ -15,7 +15,7 @@ class UnitsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
     unit = Unit.find_by(id: params["id"])
     unit.destroy
     render json: {message: "unit has been destroyed"}

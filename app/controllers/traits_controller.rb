@@ -15,7 +15,7 @@ class TraitsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
     trait = Trait.find_by(id: params["id"])
     trait.destroy
     render json: {message: "trait has been destroyed"}

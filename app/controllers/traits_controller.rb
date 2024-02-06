@@ -33,8 +33,8 @@ class TraitsController < ApplicationController
   end
 
   def destroy
-    @trait = Trait.find_by(id: params["id"])
-    @trait.destroy
+    trait = Trait.find_by(id: params["id"])
+    trait.destroy
     render json: {message: "trait has been destroyed"}
   end
 end

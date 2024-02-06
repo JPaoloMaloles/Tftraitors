@@ -173,3 +173,21 @@ MatchSummonerPerformance.create!(
   traits_id: 4,
   units_id: 4,
 )
+
+Trait.create!(
+  id: 111,
+  name: "name111",
+  num_units: 111,
+  style: 111,
+  tier_current: 111,
+  tier_total: 111,
+)
+
+Unit.create!(
+  id: 111,
+  character_id_name: "character_id_name",
+  item_names: ["item_names1","item_names2"],
+  name: "name",
+  rarity: 111,
+  tier: 111,
+)

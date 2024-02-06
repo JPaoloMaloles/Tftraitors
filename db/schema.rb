@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_06_134924) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_180910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_134924) do
     t.string "tft_game_type"
     t.string "tft_set_core_name"
     t.integer "tft_set_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "performance_traits", force: :cascade do |t|
+    t.integer "trait_id"
+    t.integer "match_summoner_performance_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

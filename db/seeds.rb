@@ -191,3 +191,8 @@ Unit.create!(
   rarity: 111,
   tier: 111,
 )
+
+PerformanceTrait.create(
+  trait_id: 111,
+  match_summoner_performance_id: 1,
+)

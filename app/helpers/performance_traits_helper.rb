@@ -1,0 +1,2 @@
+module PerformanceTraitsHelper
+end

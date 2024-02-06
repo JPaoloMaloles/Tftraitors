@@ -1,0 +1,3 @@
+json.id performance_trait.id
+json.trait_id performance_trait.trait_id
+json.match_summoner_performance_id performance_trait.match_summoner_performance_id

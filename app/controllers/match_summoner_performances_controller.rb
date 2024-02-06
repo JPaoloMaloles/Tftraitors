@@ -28,6 +28,8 @@ class MatchSummonerPerformancesController < ApplicationController
       second_augment: params["second_augment"],
       third_augment: params["third_augment"],
       companion_id: params["companion_id"],
+      traits_id: 0,
+      units_id: 0,
     )
     render :show
   end
@@ -50,6 +52,8 @@ class MatchSummonerPerformancesController < ApplicationController
       second_augment: params["second_augment"] || @match_summoner_performance.second_augment,
       third_augment: params["third_augment"] || @match_summoner_performance.third_augment,
       companion_id: params["companion_id"] || @match_summoner_performance.companion_id,
+      traits_id: params["traits_id"] || @match_summoner_performance.traits_id,
+      units_id: params["units_id"] || @match_summoner_performance.units_id,
     )
     render :show
   end

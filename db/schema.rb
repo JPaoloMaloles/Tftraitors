@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_06_114454) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_134924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,26 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_114454) do
     t.datetime "updated_at", null: false
     t.string "region"
     t.integer "profile_icon_id"
+  end
+
+  create_table "traits", force: :cascade do |t|
+    t.string "name"
+    t.integer "num_units"
+    t.integer "style"
+    t.integer "tier_current"
+    t.integer "tier_total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "character_id_name"
+    t.string "item_names", default: [], array: true
+    t.string "name"
+    t.integer "rarity"
+    t.integer "tier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

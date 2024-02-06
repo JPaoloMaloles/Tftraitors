@@ -196,3 +196,8 @@ PerformanceTrait.create(
   trait_id: 111,
   match_summoner_performance_id: 1,
 )
+
+PerformanceUnit.create(
+  unit_id: 111,
+  match_summoner_performance_id: 1,
+)

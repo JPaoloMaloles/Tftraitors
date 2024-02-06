@@ -1,2 +1,3 @@
-json.extract! performance_unit, :id, :created_at, :updated_at
-json.url performance_unit_url(performance_unit, format: :json)
+json.id performance_unit.id
+json.unit_id performance_unit.unit_id
+json.match_summoner_performance_id performance_unit.match_summoner_performance_id

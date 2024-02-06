@@ -3,6 +3,8 @@ class MatchSummonerPerformance < ApplicationRecord
   belongs_to :summoner_info
   has_many :performance_traits
   has_many :traits, through: :performance_traits
+  has_many :performance_units
+  has_many :units, through: :performance_units
 
   def parse_augment_image(augment)
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

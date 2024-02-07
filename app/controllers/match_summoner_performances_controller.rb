@@ -107,6 +107,32 @@ class MatchSummonerPerformancesController < ApplicationController
           second_augment: @match_summoner_performance.parse_augment_image(@match_summoner_performance.second_augment),
           third_augment: @match_summoner_performance.parse_augment_image(@match_summoner_performance.third_augment),
         )
+        participant["traits"].each do |trait|
+          @trait = Trait.create(
+            name: trait["name"],
+            num_units: trait["num_units"],
+            style: trait["style"],
+            tier_current: trait["tier_current"],
+            tier_total: trait["tier_total"],
+          )
+          PerformanceTrait.create(
+            trait_id: @trait.id,
+            match_summoner_performance_id: @match_summoner_performance.id,
+          )
+        end
+        participant["units"].each do |unit|
+          @unit = Unit.create(
+            character_id_name: unit["character_id"],
+            item_names: unit["itemNames"],
+            name: unit["name"],
+            rarity: unit["rarity"],
+            tier: unit["tier"],
+          )
+          PerformanceUnit.create(
+            unit_id: @unit.id,
+            match_summoner_performance_id: @match_summoner_performance.id,
+          )
+        end
       end
     end
     @match_summoner_performances = MatchSummonerPerformance.where(match_id: params["params"]["match_id"])

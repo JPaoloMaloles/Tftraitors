@@ -13,5 +13,7 @@ json.total_damage_to_players match_summoner_performance.total_damage_to_players
 json.traits_id match_summoner_performance.traits_id
 json.units_id  match_summoner_performance.units_id
 
+json.trait match_summoner_performance.traits
+json.unit match_summoner_performance.units
 json.match match_summoner_performance.match
 json.summoner_info match_summoner_performance.summoner_info

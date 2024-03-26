@@ -1,5 +1,5 @@
 class SummonerInfosController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show, :show_profile, :riot_first]
+  before_action :authenticate_admin, except: [:index, :show, :show_profile, :riot_first]
 
   def show
     @summoner_info = SummonerInfo.find_by(id: params["id"])

@@ -1,5 +1,5 @@
 class MatchSummonerPerformancesController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show, :riot_fourth]
 
   def show
     @match_summoner_performance = MatchSummonerPerformance.find_by(id: params["id"])

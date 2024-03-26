@@ -149,37 +149,51 @@ class SummonerInfosController < ApplicationController
     puts
     puts "Profile Information --------------------------------------------------------------------------------------------------------------------"
     puts
-    pp profile_information
-    # #returns
-    # :queuType
-    # :tier
-    # :rank
-    # :leaguePoints
-    # :summonerID
-    # :summonerName
-    # :wins
-    # :losses
-    # :veteran
-    # :inactive
-    # :freshBlood
-    # :hotStreak
+    if profile_information != []
+      pp profile_information
+      # #returns
+      # :queuType
+      # :tier
+      # :rank
+      # :leaguePoints
+      # :summonerID
+      # :summonerName
+      # :wins
+      # :losses
+      # :veteran
+      # :inactive
+      # :freshBlood
+      # :hotStreak
 
-    p "tier is"
-    p profile_information[0]["tier"]
+      p "tier is"
+      p profile_information[0]["tier"]
 
-    @summoner_info = SummonerInfo.create(
-      puuid: puuid,
-      region: params["region"],
-      tier: profile_information[0]["tier"],
-      rank: profile_information[0]["rank"],
-      league_points: profile_information[0]["leaguePoints"],
-      riot_summoner_id: summoner_id,
-      summoner_name: profile_information[0]["summonerName"],
-      wins: profile_information[0]["wins"],
-      losses: profile_information[0]["losses"],
-      profile_icon_id: profile_icon_id,
-    )
-
+      @summoner_info = SummonerInfo.create(
+        puuid: puuid,
+        region: params["region"],
+        tier: profile_information[0]["tier"],
+        rank: profile_information[0]["rank"],
+        league_points: profile_information[0]["leaguePoints"],
+        riot_summoner_id: summoner_id,
+        summoner_name: profile_information[0]["summonerName"],
+        wins: profile_information[0]["wins"],
+        losses: profile_information[0]["losses"],
+        profile_icon_id: profile_icon_id,
+      )
+    else
+      @summoner_info = SummonerInfo.create(
+        puuid: puuid,
+        region: params["region"],
+        tier: "blank",
+        rank: "blank",
+        league_points: "blank",
+        riot_summoner_id: summoner_id,
+        summoner_name: params["summonerName"],
+        wins: "blank",
+        losses: "blank",
+        profile_icon_id: profile_icon_id,
+      )
+    end
     render :show
   end
 end

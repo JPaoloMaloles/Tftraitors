@@ -122,7 +122,7 @@ class SummonerInfosController < ApplicationController
     require "http"
     p "region is: #{params["region"]}"
     p "summoner name is: #{params["summonerName"]}"
-    tagline = "NA1"
+    tagline = params["tagline"] || "NA1"
     tft_region = {
       "BR1" => "americas",
       "EUN1" => "europe",
@@ -160,6 +160,9 @@ class SummonerInfosController < ApplicationController
 
     puuid = summoner_information["puuid"]
     p puuid
+
+    game_name = summoner_information["gameName"]
+    p game_name
 
     #Acuiring encryped SummonerID
     puts "##################"
@@ -207,7 +210,7 @@ class SummonerInfosController < ApplicationController
         rank: profile_information[0]["rank"],
         league_points: profile_information[0]["leaguePoints"],
         riot_summoner_id: summoner_id,
-        summoner_name: profile_information[0]["summonerName"] || params["summonerName"],
+        summoner_name: game_name,
         wins: profile_information[0]["wins"],
         losses: profile_information[0]["losses"],
         profile_icon_id: profile_icon_id,

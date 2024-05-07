@@ -146,10 +146,9 @@ class SummonerInfosController < ApplicationController
     #What happens when a user's profile is update, acquires all that summoner's info based on summoner_name and region.
 
     #Finds player information based on Summoner Name (name displayed in client)
-    # api_data = HTTP.get("https://#{params["region"]}.api.riotgames.com/tft/summoner/v1/summoners/by-name/#{params["summonerName"]}?api_key=#{ENV["RIOT_API_KEY"]}")
+
     puts "tft_region is #{tft_region["NA1"]}"
     puts "https://#{tft_region[params["region"]]}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/#{params["summonerName"]}/NA1?api_key=#{ENV["RIOT_API_KEY"]}"
-    #CHANGE NA1 to tagline
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     api_data = HTTP.get("https://#{tft_region[params["region"]]}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/#{params["summonerName"]}/#{tagline}?api_key=#{ENV["RIOT_API_KEY"]}")
     summoner_information = api_data.parse(:json)

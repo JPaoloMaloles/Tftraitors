@@ -58,7 +58,6 @@ class SummonerInfosController < ApplicationController
   def riot_create
     require "http"
     region = "na1"
-    tft_region = "americas"
     #https://{regionAbbv}.api.riotgames.com/{path}?{api_key}
 
     #What happens when a user's profile is update, acquires all that summoner's info based on summoner_name and region.

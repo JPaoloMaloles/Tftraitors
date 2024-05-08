@@ -32,8 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_183147) do
     t.string "third_augment"
     t.integer "companion_id"
     t.integer "level"
-    t.text "traits", default: [], array: true
-    t.text "units", default: [], array: true
     t.integer "traits_id"
     t.integer "units_id"
   end

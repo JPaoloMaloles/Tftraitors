@@ -78,18 +78,23 @@ class MatchesController < ApplicationController
     single_match = api_data.parse(:json)
 
     if single_match
-      @match = Match.create(
-        data_version: single_match["metadata"]["data_version"],
-        riot_match_id: single_match["metadata"]["match_id"],
-        game_datetime: single_match["info"]["game_datetime"],
-        game_length: single_match["info"]["game_length"],
-        game_version: single_match["info"]["game_version"],
-        queu_id: single_match["info"]["queue_id"],
-        tft_game_type: single_match["info"]["tft_game_type"],
-        tft_set_core_name: single_match["info"]["tft_set_core_name"],
-        tft_set_number: single_match["info"]["tft_set_number"],
-      )
-      render :show
+        @match = Match.create(
+          data_version: single_match["metadata"]["data_version"],
+          riot_match_id: single_match["metadata"]["match_id"],
+          game_datetime: single_match["info"]["game_datetime"],
+          game_length: single_match["info"]["game_length"],
+          game_version: single_match["info"]["game_version"],
+          queu_id: single_match["info"]["queue_id"],
+          tft_game_type: single_match["info"]["tft_game_type"],
+          tft_set_core_name: single_match["info"]["tft_set_core_name"],
+          tft_set_number: single_match["info"]["tft_set_number"],
+        )
+      if @match.id == nil
+        @match = Match.find_by(riot_match_id: single_match["metadata"]["match_id"])
+        render json: { message: "This match already exists" }
+      else
+        render :show
+      end
     else
       render json: { message: "unable to retrieve match" }
     end

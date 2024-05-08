@@ -213,6 +213,9 @@ class SummonerInfosController < ApplicationController
         losses: profile_information[0]["losses"],
         profile_icon_id: profile_icon_id,
       )
+      if @summoner_info.id == nil
+        @summoner_info = SummonerInfo.find_by(summoner_name: game_name)
+      end
     else
       @summoner_info = SummonerInfo.create(
         puuid: puuid,

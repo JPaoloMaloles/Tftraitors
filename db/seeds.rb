@@ -150,7 +150,7 @@ Match.create!(
 MatchSummonerPerformance.create!(
   match_id: 4,
   summoner_info_id: 1,
-  riot_match_id: "4test_riot_match_id",
+  riot_match_id: "test_riot_match_id",
   puuid: "4test_puuid",
   gold_left: 4,
   last_round: 4,

@@ -58,7 +58,6 @@ class SummonerInfosController < ApplicationController
   def riot_create
     require "http"
     region = "na1"
-    tft_region = "americas"
     #https://{regionAbbv}.api.riotgames.com/{path}?{api_key}
 
     #What happens when a user's profile is update, acquires all that summoner's info based on summoner_name and region.
@@ -122,7 +121,7 @@ class SummonerInfosController < ApplicationController
     require "http"
     p "region is: #{params["region"]}"
     p "summoner name is: #{params["summonerName"]}"
-    tagline = "NA1"
+    tagline = params["tagline"] || "NA1"
     tft_region = {
       "BR1" => "americas",
       "EUN1" => "europe",
@@ -146,10 +145,9 @@ class SummonerInfosController < ApplicationController
     #What happens when a user's profile is update, acquires all that summoner's info based on summoner_name and region.
 
     #Finds player information based on Summoner Name (name displayed in client)
-    # api_data = HTTP.get("https://#{params["region"]}.api.riotgames.com/tft/summoner/v1/summoners/by-name/#{params["summonerName"]}?api_key=#{ENV["RIOT_API_KEY"]}")
+
     puts "tft_region is #{tft_region["NA1"]}"
     puts "https://#{tft_region[params["region"]]}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/#{params["summonerName"]}/NA1?api_key=#{ENV["RIOT_API_KEY"]}"
-    #CHANGE NA1 to tagline
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     api_data = HTTP.get("https://#{tft_region[params["region"]]}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/#{params["summonerName"]}/#{tagline}?api_key=#{ENV["RIOT_API_KEY"]}")
     summoner_information = api_data.parse(:json)
@@ -160,6 +158,9 @@ class SummonerInfosController < ApplicationController
 
     puuid = summoner_information["puuid"]
     p puuid
+
+    game_name = summoner_information["gameName"]
+    p game_name
 
     #Acuiring encryped SummonerID
     puts "##################"
@@ -207,11 +208,14 @@ class SummonerInfosController < ApplicationController
         rank: profile_information[0]["rank"],
         league_points: profile_information[0]["leaguePoints"],
         riot_summoner_id: summoner_id,
-        summoner_name: profile_information[0]["summonerName"] || params["summonerName"],
+        summoner_name: game_name,
         wins: profile_information[0]["wins"],
         losses: profile_information[0]["losses"],
         profile_icon_id: profile_icon_id,
       )
+      if @summoner_info.id == nil
+        @summoner_info = SummonerInfo.find_by(summoner_name: game_name)
+      end
     else
       @summoner_info = SummonerInfo.create(
         puuid: puuid,
